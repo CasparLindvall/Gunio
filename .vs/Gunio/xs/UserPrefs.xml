@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{BE445D78-7B29-7993-5584-ED1BCE6243A8}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerCharacter.cs">
+    <Files>
+      <File FileName="Assets/Scripts/PlayerCharacter.cs" Line="18" Column="10" />
+      <File FileName="Assets/Scripts/GameState.cs" />
+      <File FileName="Assets/Scripts/MovePlayer.cs" />
+      <File FileName="Assets/Scripts/PlayerCollision.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Gunio" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Events" expanded="True" />
+                <Node name="PlayerCharacter.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6c0d4df5-8e7a-42a9-81e2-4159e0249055" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
