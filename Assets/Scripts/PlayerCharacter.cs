@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerCharacter : GameObject
+public class PlayerCharacter : MonoBehaviour
 {
     // Stats and variables for the player
     public int HP = 100;
@@ -14,6 +14,7 @@ public class PlayerCharacter : GameObject
     public int playerSpeed = 10;
     public int playerJumpPower = 900;
     public bool playerFacingLeft = false;
+    */
 
     public void Update()
     {
@@ -22,7 +23,6 @@ public class PlayerCharacter : GameObject
             Restart();    
         }
     }
-    */
 
     public void Restart()
     {

@@ -7,7 +7,7 @@ public class MovePlayer : MonoBehaviour
     public int playerSpeed = 10;
     public int playerJumpPower = 900;
     public bool playerFacingLeft = false;
-    PlayerCharacter Player = new PlayerCharacter();
+    //PlayerCharacter Player = new PlayerCharacter();
 
     // Start is called before the first frame update
     void Start()

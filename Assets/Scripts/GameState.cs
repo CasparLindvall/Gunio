@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum GameState
+﻿public enum GameState
 {
     MainMenu,
+    LoadLevel,
     Playing,
-    Dead
+    Won,
+    IsDead
 }
