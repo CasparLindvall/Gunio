@@ -22,9 +22,8 @@ public class GameManager : MonoBehaviour
     private float highScore;
 
     //Display the game time;
+    // Unsure if I should use local referene or just UIManager.instance?
     private UIManager uiManager;
-
-    //private int level = 3;                                    //Current level number, expressed in game as "Day 1".
 
     //Awake is always called before any Start functions
     void Awake()
@@ -109,10 +108,13 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Won:
+                highScore = Mathf.Max(totalScore, highScore);
+                /*
                 if (totalScore > highScore)
                 {
                     highScore = totalScore;
                 }
+                */
                 ResetGame();
                 break;
 
