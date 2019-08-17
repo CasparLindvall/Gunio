@@ -32,6 +32,12 @@ TextureImporter:
   - first:
       213: 5130011782508230231
     second: OpenGunnerEnemies2_9
+  - first:
+      213: 1738464366951201680
+    second: alpha_clr
+  - first:
+      213: -959165704824828333
+    second: OpenGunnerEnemies2_10
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -79,7 +85,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -136,9 +142,22 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -24, y: -14}
+        - {x: -19, y: -7}
+        - {x: -18, y: -3}
+        - {x: -19, y: 2}
+        - {x: -17, y: 9}
+        - {x: -8, y: 14}
+        - {x: -4, y: 15}
+        - {x: 2, y: 15}
+        - {x: 14, y: 12}
+        - {x: 18, y: 5}
+        - {x: 18, y: -8}
+        - {x: 20, y: -11}
+        - {x: 24, y: -14}
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -157,7 +176,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,7 +197,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,7 +218,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,7 +239,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,7 +260,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,7 +281,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,7 +302,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -304,7 +323,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,7 +344,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,6 +352,62 @@ TextureImporter:
       bones: []
       spriteID: 003557cdacbcaf4449f9598e020a77cf
       internalID: 5130011782508230231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alpha_clr
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1052
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c425e792638b4bd2bb0f85edad0f216
+      internalID: 1738464366951201680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OpenGunnerEnemies2_10
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 992
+        width: 48
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: -14}
+        - {x: -18, y: -7}
+        - {x: -18, y: -1}
+        - {x: -21, y: 1}
+        - {x: -21, y: 6}
+        - {x: -14, y: 12}
+        - {x: -9, y: 14}
+        - {x: -5, y: 15}
+        - {x: 5, y: 15}
+        - {x: 11, y: 13}
+        - {x: 16, y: 9}
+        - {x: 18, y: 3}
+        - {x: 18, y: -7}
+        - {x: 24, y: -14}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fe7a0cd00af2475fbba471eb66d6915
+      internalID: -959165704824828333
       vertices: []
       indices: 
       edges: []

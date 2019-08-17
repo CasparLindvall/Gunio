@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Handles the collision detection between player and the game world
 public class PlayerCollision : MonoBehaviour
 {
     public GameManager gameManager;
+    private int bulletDmg = 25;
 
     void Awake()
     {
@@ -14,27 +17,35 @@ public class PlayerCollision : MonoBehaviour
             //Instantiate gameManager prefab
             Instantiate(gameManager);
         }
+        bulletDmg = GameManager.instance.GetBulletDmg();
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        tag = col.gameObject.tag;
-        if (tag == "Deathzone")
+        string otherTag = col.gameObject.tag;
+        switch (otherTag)
         {
-            GameManager.instance.SetState(GameState.IsDead);
+            case "Deathzone":
+                GameManager.instance.SetState(GameState.IsDead);
+                break;
+            case "Goal":
+                GameManager.instance.SetState(GameState.Won);
+                break;
+            case "Coin":
+                GameManager.instance.AddScore(75);
+                Destroy(col.gameObject);
+                break;
+            case "Bullet":
+                GameManager.instance.ChangeHealth(-bulletDmg);
+                Destroy(col.gameObject);
+                break;
+            //case "Ground": see moveplayer
+            //    break;
+            //case "Turret":
+            //    break;
 
-        }
-
-        else if (tag == "Goal")
-        {
-            GameManager.instance.SetState(GameState.Won);
-
-        }
-        else if (tag == "Coin")
-        {
-            GameManager.instance.AddScore(100);
-            Destroy(col.gameObject);
-
+            default:
+                break;
         }
     }
 }

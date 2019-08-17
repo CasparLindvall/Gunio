@@ -9,19 +9,11 @@ public class MovePlayer : MonoBehaviour
     public bool playerFacingLeft = false;
 
     private bool grounded = false;
-    private bool jump = false;
     private int numOfJumps = 0;
     private int maxJumps = 2;
-    //PlayerCharacter Player = new PlayerCharacter();
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    // TODO: Move to main loop and then call playerMove
+    // Get input and move player
     void Update()
     {
         Rigidbody2D playerBody = GetComponent<Rigidbody2D>();
@@ -46,7 +38,6 @@ public class MovePlayer : MonoBehaviour
         // Jump
         if (Input.GetButtonDown("Jump"))
         {
-            //Jump(playerBody);
             JumpCharacter(playerBody);
         }
 
@@ -54,9 +45,12 @@ public class MovePlayer : MonoBehaviour
         playerBody.velocity = new Vector2(moveX * playerSpeed, playerBody.velocity.y);
 
 
+        //Anims TODO
 
-
-        //Anims
+        if (Input.GetKey("escape"))
+        {
+            GameManager.instance.SetState(GameState.Quit);
+        }
 
     }
 
@@ -69,13 +63,6 @@ public class MovePlayer : MonoBehaviour
         transform.localScale = localScaleNew;
     }
 
-    // Jump
-    void Jump(Rigidbody2D playerBody)
-    {
-        //Jump
-        playerBody.AddForce(Vector2.up * playerJumpPower);
-    }
-
     void JumpCharacter(Rigidbody2D playerBody)
     {
         if (grounded)
@@ -84,23 +71,16 @@ public class MovePlayer : MonoBehaviour
         }
         if (grounded || numOfJumps < maxJumps)
         {
-
-            //animator.Play("character-jump", -1, 0f);
-
-            // rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-            //rb2d.AddForce(new Vector2(0f, jumpForce));
             playerBody.AddForce(Vector2.up * playerJumpPower);
             numOfJumps += 1;
             grounded = false;
         }
-        jump = false;
     }
 
+    // Reset jump if touching ground or turrets
     void OnCollisionEnter2D(Collision2D collide)
     {
-        if (collide.gameObject.tag == "Ground")
-        {
-            grounded = true;
-        }
+        var otherTag = collide.gameObject.tag;
+        grounded |= otherTag == "Ground" || otherTag == "Turret";
     }
 }

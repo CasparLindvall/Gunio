@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class Loader : MonoBehaviour
 {
     public GameManager gameManager;          //GameManager prefab to instantiate.
-    //public GameObject soundManager;         //SoundManager prefab to instantiate.
+    //public GameObject soundManager;         // TODO
 
 
     void Awake()
@@ -33,11 +33,10 @@ public class Loader : MonoBehaviour
     }
 
     // When pressed load scene called
-    public void LoadSceneOnClick(string sceneName)
+    public void LoadSceneOnClick(int diff)
     {
-        GameState OldState = GameManager.instance.GetState();
+        GameManager.instance.SetDifficulty(diff);
         GameManager.instance.SetState(GameState.LoadLevel);
-        //gameManager.LoadLevel("GameScene");
-        //SceneManager.LoadScene(sceneName);
+
     }
 }

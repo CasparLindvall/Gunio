@@ -4,5 +4,6 @@
     LoadLevel,
     Playing,
     Won,
-    IsDead
+    IsDead,
+    Quit
 }

@@ -8,6 +8,9 @@ TagManager:
   - Goal
   - Coin
   - Ground
+  - Bullet
+  - Turret
+  - Wall
   layers:
   - Default
   - TransparentFX

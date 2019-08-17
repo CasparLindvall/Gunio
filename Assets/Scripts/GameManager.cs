@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;       //Allows us to use Lists.
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,17 +15,16 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager instance = null;                //Static instance of GameManager which allows it to be accessed by any other script.
+    //Static instance of GameManager which allows it to be accessed by any other script.
+    public static GameManager instance = null;
     private GameState gameState;
     private float gameTime;
-    private int totalScore;
+    private float totalScore;
     private float highScore;
+    private int health = 100;
+    private int levelDifficulty = 1;
+    private int bulletDmg = 25;
 
-    //Display the game time;
-    // Unsure if I should use local referene or just UIManager.instance?
-    private UIManager uiManager;
-
-    //Awake is always called before any Start functions
     void Awake()
     {
         //Check if instance already exists
@@ -47,11 +46,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         gameState = GameState.MainMenu;
-        //Get a component reference to the attached BoardManager script
-        uiManager = GetComponent<UIManager>();
 
         //Call the InitGame function to initialize the first level 
-        // InitGame();
         gameTime = 0;
         totalScore = 0;
         highScore = 0;
@@ -74,52 +70,47 @@ public class GameManager : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
-        //Call the SetupScene function of the BoardManager script, pass it current level number.
-        //boardScript.SetupScene(level);
         LoadLevel("GameScene");
 
     }
 
-
-    //Update is called every frame.
-    // Todo onchange() for state
+    // If GameState is changed then handle it accordingly
     void Update()
     {
         switch (gameState)
         {
             case GameState.MainMenu:
-                // nada?
                 break;
 
             case GameState.LoadLevel:
                 // To differentiate from resetGame ?
                 ResetGame();
+                //1st time loading edge-case
                 if (UIManager.instance)
                 {
                     UIManager.instance.Sethighscore(highScore);
                 }
                 break;
 
+            //Core game-loop
             case GameState.Playing:
-
-                // Continue playing
                 gameTime += Time.deltaTime;
                 UIManager.instance.SetTime(gameTime);
                 break;
 
+            // Reached goal
             case GameState.Won:
+                CalculateFinalScore();
+                totalScore += gameTime*10;
                 highScore = Mathf.Max(totalScore, highScore);
-                /*
-                if (totalScore > highScore)
-                {
-                    highScore = totalScore;
-                }
-                */
                 ResetGame();
                 break;
 
             case GameState.IsDead:
                 ResetGame();
+                break;
+            case GameState.Quit:
+                LoadLevel("MainMenu");
                 break;
         }
     }
@@ -131,8 +122,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(sceneName);
             System.Threading.Thread.Sleep(1000);
-
-            gameState = GameState.Playing;
+            if (sceneName == "GameScene")
+                gameState = GameState.Playing;
+            else if (sceneName == "MainMenu")
+                gameState = GameState.MainMenu;
         }
     }
 
@@ -141,6 +134,7 @@ public class GameManager : MonoBehaviour
         // Save previous game state then load
         gameTime = 0;
         totalScore = 0;
+        health = 100;
         LoadLevel("GameScene");
     }
 
@@ -151,7 +145,20 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void ChangeHealth(int amount)
+    {
+        health += amount;
+        UIManager.instance.SetHealth(health); 
+        if(health <= 0)
+        {
+            instance.gameState = GameState.IsDead;
+        }
+    }
+
+
+    // scene changer taken from
     //https://answers.unity.com/questions/1174255/since-onlevelwasloaded-is-deprecated-in-540b15-wha.html
+   
     void OnEnable()
     {
         //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
@@ -166,17 +173,53 @@ public class GameManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        //Debug.Log("Level Loaded");
-        //Debug.Log(scene.name);
-        //Debug.Log(mode);
+
         if(scene.name == "GameScene")
         {
             UIManager.instance.SetTime(gameTime);
             UIManager.instance.SetScore(totalScore);
             UIManager.instance.Sethighscore(highScore);
+            UIManager.instance.SetHealth(health);
         }
     }
 
+    public int GetBulletDmg()
+    {
+        return bulletDmg;
+    }
 
+    //Set bullet dmg depending on diff
+    public void SetDifficulty(int diff)
+    {
+        levelDifficulty = diff;
+        switch (levelDifficulty)
+        {
+            case 1:
+                bulletDmg = 10;
+                break;
+            case 2:
+                bulletDmg = 25;
+                break;
+            case 3:
+                bulletDmg = 50;
+                break;
+            case 10:
+                bulletDmg = 100;
+                break;
+        }
+    }
+
+    //Create score multiplier depending on gameTime, health and difficulty
+    private void CalculateFinalScore()
+    {
+        float extraScore = 0;
+        float timeScore = (45 - gameTime) * 50;
+        if (timeScore > 0)
+            extraScore += timeScore;
+        extraScore *= health / 50; //scale with %health left
+        extraScore *= levelDifficulty; //1 for easy, 2 normal, 4 hard
+        totalScore += extraScore;
+
+    }
 
 }

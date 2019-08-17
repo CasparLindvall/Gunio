@@ -7,14 +7,15 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-    public static UIManager instance = null;                //Static instance of GameManager which allows it to be accessed by any other script.
-    public Text gameTimerText;
-    public Text scoreText;
-    public Text highscoreText;
+    public static UIManager instance = null;  //Static instance of GameManager which allows it to be accessed by any other script.
+    public Text gameTimerText;                // game time
+    public Text scoreText;                    // score
+    public Text highscoreText;                // curr high score
+    public Text healthText;                   // Reference to the UI's health text.
+ 
 
 
 
-    //Awake is always called before any Start functions
     void Awake()
     {
         //Check if instance already exists
@@ -31,33 +32,28 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        /*
-        gameTimerText.text = "Time: 0.00";
-        scoreText.text = "Score: 0";
-        highscoreText.text = "Highscore: 0";
-        */
-
-        //Sets this to not be destroyed when reloading scene
-        //DontDestroyOnLoad(gameObject);
-        //DontDestroyOnLoad(instance.gameTimerText);
 
 
     }
 
-public void SetTime(float newTime)
+    public void SetTime(float newTime)
     {
-        int sec = (int)newTime;
         string timeString = "Time: " + newTime.ToString("0.00");
         gameTimerText.text = timeString;
     }
 
-    public void SetScore(int score)
+    public void SetScore(float score)
     {
         scoreText.text = "Score: " + score.ToString("0");
     }
 
     public void Sethighscore(float score)
     {
-        highscoreText.text = "Highscore: " + score.ToString("0.00");
+        highscoreText.text = "Highscore: " + score.ToString("0");
+    }
+
+    public void SetHealth(int newHealth)
+    {
+        healthText.text = "Health: " + newHealth.ToString("0");
     }
 }
