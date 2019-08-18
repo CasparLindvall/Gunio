@@ -33,7 +33,6 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-
     }
 
     public void SetTime(float newTime)

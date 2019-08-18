@@ -1,5 +1,15 @@
 ﻿<Properties StartupConfiguration="{BE445D78-7B29-7993-5584-ED1BCE6243A8}|">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerCamera.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Loader.cs" Line="36" Column="42" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="182" Column="22" />
+      <File FileName="Assets/Scripts/UIManager.cs" Line="7" Column="14" />
+      <File FileName="Assets/Scripts/PlayerCollision.cs" Line="24" Column="6" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MovePlayer.cs" Line="17" Column="10" />
+      <File FileName="Assets/Scripts/TurretFire.cs" Line="15" Column="17" />
+      <File FileName="Assets/Scripts/PlayerCamera.cs" Line="18" Column="10" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -16,7 +26,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="09e0daf9-2ed0-40c4-8ebc-f44e5b4ce6ff" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cbada20c-8c80-49fa-acd6-e48d6a803c3c" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

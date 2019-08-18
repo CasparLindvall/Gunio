@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
             case 2:
                 bulletDmg = 25;
                 break;
-            case 3:
+            case 4:
                 bulletDmg = 50;
                 break;
             case 10:
